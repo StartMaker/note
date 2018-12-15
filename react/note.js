@@ -14,4 +14,6 @@
             console.log(this); //obj2,this指向obj2
         }
     };
+    obj1.func();
+    obj2.func();
 }());
