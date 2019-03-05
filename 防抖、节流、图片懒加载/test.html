@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .imgToBlock{
+            display: block;
+            height: 200px;
+        }
+        #display-img{
+            overflow-y: scroll;
+        }
+    </style>
+    <script type="text/javascript" src="./anti-shake.js"></script>
+    <script type="text/javascript" src="throttle.js"></script>
+    <script type="text/javascript" src="lazy-layout.js"></script>
+    <script type="text/javascript">
+        function log() {
+            console.log('防抖');
+        }
+        let log_noShake = _anti_shake(log,5000,true);
+        function log2() {
+            console.log("节流1");
+        }
+        let log_throttle = throttle(log2,2000);
+        function log3() {
+            console.log("节流2");
+        }
+        let log_throttle2 = throttle2(log3,1000);
+    </script>
+</head>
+<body>
+    <div style="height: 600px; " id="display-img"></div>
+    <button type="button" onclick="log_noShake()">防抖</button>
+    <button type="button" onclick="log_throttle()">节流</button>
+    <button type="button" onclick="log_throttle2()">节流2</button>
+</body>
+</html>
