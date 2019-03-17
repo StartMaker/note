@@ -13,10 +13,12 @@
     // set.forEach(function (item) {
     //     console.log(item);
     // });
-    let a= {};
-    a.a = a;
-    let b = [1];
-    let set = new WeakMap();
-    set.set(b,'b');
-    console.log(set);
+
+    let map =new Map();
+    map.set('1','1');
+    map.set('2','1');
+    map.set('3','1');
+    map.set('4','1');
+    var o = [...map.values()];
+    console.log(o);
 }());

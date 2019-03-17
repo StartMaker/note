@@ -1,6 +1,5 @@
 //防抖函数
 function _anti_shake(fn, wait, immediate) {
-    console.log('start');
     let timer;
     let context;
     let arg;
@@ -14,9 +13,7 @@ function _anti_shake(fn, wait, immediate) {
 
     return function (...parmas) {
         if(!timer){
-            console.log(timer);
             timer = later();
-            console.log(timer);
             if(immediate){
                 fn.apply(this,parmas);
             }

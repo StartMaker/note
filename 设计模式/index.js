@@ -15,8 +15,8 @@
     function inherit(target,origin) {
         function F() {}
         F.prototype = origin.prototype;
-        target = new F();
-        target.constructor = target;
+        F.constructor = target;
+        target.prototype = new F();
     }
     //test:
     function parent() {
@@ -223,12 +223,12 @@
         }
     };
     //工厂抽象模式：创造子类而非实例对象
-    function createAbstractFactory(subType,superType) {
+    function createAbstractFactory(sub,superType) {
         if(typeof createAbstractFactory[superType] === 'function'){
             function F() {}
             F.prototype = createAbstractFactory[superType].prototype;
-            subType.prototype = new F();
-            subType.constructor = subType;
+            sub.prototype = new F();
+            sub.constructor = sub;
         }
         else {
             throw new Error('工厂无此方法');
@@ -238,7 +238,6 @@
 (function () {
    //单例模式:放公共的属性和工具
     let jq = (function () {
-
         return {
             get: function () {
 
