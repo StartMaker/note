@@ -2,12 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script type="text/javascript" src="index.js">
-
-    </script>
+    <title>jsonp</title>
+    <style type="text/css">
+        input{
+            margin: 100px;
+            width: 400px;
+            height: 50px;
+        }
+    </style>
 </head>
 <body>
-
+    <input type="text" id="input" />
+    <script type="text/javascript">
+        function a(value){
+            console.log(value);
+        }
+        document.getElementById('input').oninput = function (ev) {
+            let jsonp = document.createElement("script");
+            jsonp.src = "https://www.baidu.com/sugrec?" + "cb=a&wd=" + ev.target.value;
+            document.body.appendChild(jsonp);
+            jsonp.parentNode.removeChild(jsonp);
+        }
+    </script>
 </body>
 </html>
